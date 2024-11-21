@@ -1,0 +1,354 @@
+/* Font: Inter
+Licensed under the SIL Open Font License, Version 1.1.
+See the full license in fonts/OFL.txt */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+/* font-family: "Inter", sans-serif; */
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    --bodyBorder: 5px;
+    /* --bodyBorderColor: #1E1E1E; */
+    --bodyBorderColor: #3D382F;
+    --bodyColor: #F1EAD9;
+}
+body{
+    margin: 0;
+    font-family: "Inter", sans-serif;
+}
+
+section{
+    height: 100vh;
+    max-width: 100vw;
+}
+
+section#introduction{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bodyColor);
+    position: relative;
+    header{
+        width: 100%;
+        top: 0;
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        p,nav{
+            margin: 10px 20px;
+        }
+        p{
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #1E1E1E;
+        }
+    }
+    .window{
+        position: relative;
+        border: solid var(--bodyBorder) var(--bodyBorderColor);
+        height: 70%;
+        width: 80%;
+        .window-top{
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            align-items: center;
+            column-gap: 20px;
+            border-bottom: solid var(--bodyBorder) var(--bodyBorderColor);
+            .round{
+                display: flex;
+                content: "";
+                --Size: 13px;
+                height: var(--Size);
+                width: var(--Size);
+                border-radius: 50%;
+                background: #1E1E1E;
+            }
+        }
+        .window-content{
+            display: flex;
+            flex-direction: column;
+            align-items: first baseline;
+            margin-top: 100px;
+            margin-left: 30px;
+            h1{
+                font-size: 4rem;
+                font-weight: 800;
+                color: #1E1E1E;
+            }
+        }
+        .icons{
+            svg{
+                height: 3rem;
+            }
+        }
+    }
+}
+
+section#projects{
+    /* background: #9595b1; */
+    background: var(--bodyColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .container{
+        position: relative;
+        width: 90%;
+        height: 90%;
+        border: solid var(--bodyBorder) var(--bodyBorderColor);
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: min-content auto;
+        .container-header{
+            grid-column: 1/-1;
+            font-size: 2rem;
+            color: #1E1E1E;
+            letter-spacing: 5px;
+            font-weight: 800;
+            height: fit-content;
+            text-align: center;
+            text-transform: uppercase;
+            padding: 10px 0;
+        }
+        .card{
+            height: 80%;
+            width: 95%;
+            border: solid var(--bodyBorder) var(--bodyBorderColor);
+            justify-self: center;
+            align-self: center;
+            box-shadow: 9px 8px 0 #1E1E1E;
+            .card-header{
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                border-bottom: solid var(--bodyBorder) var(--bodyBorderColor);
+                position: relative;
+                p{
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                    letter-spacing: 3px;
+                }
+                button{
+                    background: none;
+                    position: absolute;
+                    right: 5px;
+                    border: none;
+                    svg{
+                        height: 30px;
+                    }
+                }
+            }
+        }
+        .card.project-bigWindow{
+            box-shadow: none;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            align-self: center;
+            justify-self: center;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            /* background: #D5D5D6; */
+            background: var(--bodyColor);
+            box-shadow: 9px 8px 0 #1E1E1E;
+            position: absolute;
+            .card-header{
+                margin-bottom: 20px;
+                p{
+                    font-size: 2rem;
+                    font-weight: 600;
+                }
+                button{
+                    background: none;
+                    position: absolute;
+                    align-self: center;
+                    right: 20px;
+                    font-weight: 500;
+                    font-size: 1.5rem;
+                    height: fit-content;
+                    width: fit-content;
+                    border: none;
+                }
+                button:hover{
+                    font-weight: 700;
+                }
+            }
+            .content{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                overflow-y: scroll;
+                .project-view{
+                    display: flex;
+                    flex-direction: column;
+                    .galery{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        column-gap: 10px;
+                        position: relative;
+                        button{
+                            margin: 0;
+                            width: 60px;
+                            height: 60px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border: var(--bodyBorder) solid var(--bodyBorderColor);
+                            font-weight: 700;
+                            border-radius: 10%;
+                            background: none;
+                            svg{
+                                height: 50%;
+                                polygon{
+                                    fill: #1E1E1E;
+                                }
+                            }
+                            svg.prev{
+                                transform: rotate(-90deg);
+                                margin-right: 3%;
+                            } 
+                            svg.next{
+                                transform: rotate(90deg);
+                                margin-left: 3%;
+                            } 
+                        }
+                        button:hover{
+                            background: #1E1E1E;
+                            svg{
+                                polygon{
+                                    fill: #D5D5D6;
+                                }
+                            }
+                        }
+                        ul{
+                            display: flex;
+                            flex-direction: row;
+                            li{
+                                list-style: none;
+                                display: none;
+                                img{
+                                    margin: auto;
+                                    height: 300px;
+                                    vertical-align: top;
+                                }
+                            }
+                            li.visible{
+                                display: flex;
+                            }
+                        }
+                        }
+                    .links-area{
+                        margin-top: 10px;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around;
+                        border: solid 1px #1e1e1e63;
+                        padding: 10px 0;
+                        a{
+                            cursor: pointer;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            column-gap: 5px;
+                            font-size: 1rem;
+                            padding: 0 15px;
+                            border-radius: 20px;
+                            transition: background 0.5s ease-in;
+                        }
+                        a:hover{
+                            background: #1e1e1e52;
+                        }
+                }
+                }
+                .project-description{
+                    margin-top: 30px;
+                    margin-bottom: 20px;
+                    width: 90%;
+                    p,li,a{
+                        font-size: 1.25rem;
+                    }
+                    a{
+                        text-decoration: underline;
+                        text-decoration-thickness: 3px;
+                        text-decoration-color: #1e1e1e63;
+                    }
+                    a:hover{
+                        text-decoration-color: #1e1e1eaf;
+                    }
+                    ul{
+                        margin-top: 8px;
+                    }
+                }
+            }
+        }
+        .card.project-smallWindow{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30vw;
+            height: fit-content;
+            cursor: pointer;
+            transition: transform 0.5s ease-in-out;
+            .card-header{
+                margin-bottom: 20px;
+            }
+            .content{
+                padding: 0 20px;
+                padding-bottom: 20px;
+                text-align: justify;
+                margin-top: 10px;
+                font-size: 1.25rem;
+                
+            }
+        }
+        .card.project-smallWindow:hover{
+            transform: translateY(-10px);
+            .card-header{
+                background: #1E1E1E;
+                color: #D5D5D6;
+                svg{
+                    fill: #D5D5D6;
+                }
+            }
+        }
+    }
+}
+
+.window {
+	position: fixed;
+	box-shadow: 1px 1px 4px rgba(0,0,0,0,0.9), -1px 1px 4px rgba(0,0,0,0,0.9);
+    .window-content {
+        height: 100%;
+        padding: 5px;
+    }
+    .window-top{
+        cursor: move;
+        height: 20px;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        padding: 5px;
+    }
+}
+#myWindow {
+	z-index: 999;
+}
+
+button{
+    cursor: pointer;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+    font-size: inherit;
+}
