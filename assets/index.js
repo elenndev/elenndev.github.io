@@ -1,6 +1,6 @@
 let initialPosition = null
 window.addEventListener('load', ()=> {
-    const draggableWindow = document.querySelector('#myWindow')
+    const draggableWindow = document.querySelector('.myWindow')
     initialPosition = draggableWindow.getBoundingClientRect()
 })
 
@@ -68,7 +68,7 @@ function makeDraggable (element) {
 
 
 }
-makeDraggable(document.querySelector('#myWindow'));
+makeDraggable(document.querySelector('.myWindow'));
 
 window.addEventListener("scroll", ()=>{
     const element = document.querySelector('#myWindow')
@@ -84,9 +84,6 @@ document.addEventListener('click', e => {
 
 function closeProject(element){
     const bigWindow = element.parentElement.parentElement
-    console.log(bigWindow)
-    const win = document.querySelector('.project-bigWindow')
-    // console.log(window.getComputedStyle(win).display)
     bigWindow.style.display = 'none';
 }
 
