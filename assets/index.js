@@ -68,14 +68,13 @@ function makeDraggable (element) {
 
 
 }
-makeDraggable(document.querySelector('.myWindow'));
+// makeDraggable(document.querySelector('.myWindow'));
 
 window.addEventListener("scroll", ()=>{
     const element = document.querySelector('#myWindow')
     element.style.position = 'sticky'
 })
 
-//Close the window on click of a red button
 document.addEventListener('click', e => {
     if (e.target.closest('.round.red')) {
         e.target.closest('.window').remove();
