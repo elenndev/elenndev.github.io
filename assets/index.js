@@ -1,9 +1,42 @@
 let initialPosition = null
 const projectsSmallCards = document.querySelectorAll('.project-smallWindow')
+const navbar = document.querySelector('.navbar.items')
+
+
+// style
+    //margin top do primeiro section
 const headerHeight = Number(window.getComputedStyle(document.querySelector('header')).height.slice(0,-2))
 console.log(headerHeight)
 const introductionSection = document.querySelector('#introduction')
 introductionSection.style.marginTop = `${headerHeight * 2}px`
+
+    // scroll navbar
+const links = navbar.querySelectorAll('a.toSection')
+links.forEach(link => {
+    link.addEventListener('click', function(event){
+        event.preventDefault()
+        const id_linkTarget = link.getAttribute('href')
+
+        const linkTarget = document.querySelector(id_linkTarget)
+        const controlNavbar = document.querySelector('.control_navbar')
+
+        linkTarget.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        })
+
+        if (navbar.classList.contains('visible') || window.getComputedStyle(controlNavbar).dsplay != 'none'){
+            navbar.classList.remove('visible')
+            controlNavbar.classList.remove('toHideNav')
+            controlNavbar.classList.add('toShowNav')
+        }
+
+    })
+})
+
+
+
+
 window.addEventListener('load', ()=> {
     const draggableWindow = document.querySelector('.myWindow')
     initialPosition = draggableWindow.getBoundingClientRect()
@@ -81,7 +114,6 @@ function makeDraggable (element) {
 // })
 
 function controlNavbar(element){
-    const navbar = document.querySelector('.navbar.items')
     if (navbar.classList.contains('visible')){
         element.classList.add('toShowNav')
         element.classList.remove('toHideNav')
