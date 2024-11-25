@@ -1,8 +1,4 @@
-/* Font: Inter
-Licensed under the SIL Open Font License, Version 1.1.
-See the full license in fonts/OFL.txt */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-/* font-family: "Inter", sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
 
 * {
@@ -19,7 +15,7 @@ body {
     padding: 0;
     position: relative;
     background: var(--bodyColor);
-    font-family: "Inter", sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
     display: flex;
     overflow-x: hidden;
     flex-direction: column;
@@ -55,7 +51,7 @@ section {
     content: "";
     height: 500px;
     position: absolute;
-    top: 5%;
+    top: -70%;
     left: 0;
     border-radius: 50%;
     width: 500px;
@@ -71,14 +67,14 @@ section {
     content: "";
     height: 500px;
     position: absolute;
-    top: 500px;
+    top: 0px;
     right: 0;
     border-radius: 50%;
     width: 500px;
     filter: blur(20px);
     z-index: 0;
     background:
-        radial-gradient(circle at 50% 50%, rgba(0, 0, 255, 1), rgba(0, 0, 0, 0)),
+        radial-gradient(circle at 50% 50%, rgb(0, 0, 255), rgba(0, 0, 0, 0)),
         url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='8.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -87,7 +83,7 @@ section {
     content: "";
     height: 800px;
     position: absolute;
-    top: 1500px;
+    bottom: 0;
     right: 0;
     border-radius: 50%;
     width: 800px;
@@ -95,7 +91,7 @@ section {
     z-index: 0;
     overflow-x: hidden;
     background:
-        radial-gradient(circle at 50% 50%, rgb(235, 100, 76), rgb(228, 56, 26), rgb(243, 161, 46)),
+        radial-gradient(circle at 50% 50%, rgba(255, 91, 95, 1), rgba(228, 154, 51, 1)),
         url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='8.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 #projects::after {
@@ -110,8 +106,7 @@ section {
     filter: blur(20px);
     z-index: 0;
     background:
-        radial-gradient(circle at 50% 50%, rgb(0, 4, 255) 30.33%, 
-        rgba(196, 10, 88, 0) 100%),
+        radial-gradient(circle at 50% 50%, rgba(0, 0, 255, 0.753), rgba(0, 0, 0, 0)),
         url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='8.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -901,13 +896,10 @@ section#aboutMe {
 
                     }
                     .smallWindow {
-                        /* width: 300px; */
                         width: 30%;
                         height: 70%;
                         max-height: 60%;
                         display: flex;
-                        /* position: absolute; */
-                        /* right: 20px; */
                         background: #E9E3DC;
                         border: solid var(--bodyBorder) var(--bodyBorderColor);
                         box-shadow: 6px 5px 0 #1E1E1E;
@@ -1071,6 +1063,22 @@ a {
 }
 
 @media (max-width: 770px) {
+    section#introduction::before{
+        width: 400px;
+        height: 400px;
+        top: -90%;
+    }
+    section#introduction::after{
+        width: 400px;
+        height: 400px;
+        top: 250px;
+    }
+
+    section#projects::before{
+        right: 0;
+        height: 200px;
+        width: 200px;
+    }
     section#introduction>#myWindow {
         width: 100%;
         .window-content {
@@ -1085,6 +1093,7 @@ a {
             }
             .smallWindow{
                 width: 100px;
+                margin-top: 50px;
                 right: 20px;
             }
         }
