@@ -1,4 +1,7 @@
 let initialPosition = null
+const projectsSmallCards = document.querySelectorAll('.project-smallWindow')
+
+
 window.addEventListener('load', ()=> {
     const draggableWindow = document.querySelector('.myWindow')
     initialPosition = draggableWindow.getBoundingClientRect()
@@ -75,19 +78,39 @@ window.addEventListener("scroll", ()=>{
     element.style.position = 'sticky'
 })
 
-document.addEventListener('click', e => {
-    if (e.target.closest('.round.red')) {
-        e.target.closest('.window').remove();
+function controlNavbar(element){
+    const navbar = document.querySelector('.navbar.items')
+    if (navbar.classList.contains('visible')){
+        element.classList.add('toShowNav')
+        element.classList.remove('toHideNav')
+        navbar.style.display= 'none'
+        navbar.classList.remove('visible')
+    } else {
+        element.classList.add('toHideNav')
+        element.classList.remove('toShowNav')
+        navbar.classList.add('visible')
+        navbar.style.display = 'flex'
     }
-});
 
+
+
+}
 function closeProject(element){
     const bigWindow = element.parentElement.parentElement
     bigWindow.style.display = 'none';
+    
+    projectsSmallCards.forEach(card => {
+        card.style.display = 'flex'
+    })
 }
 
 function openProject(projectName){
     const projectWindow = document.querySelector(`.project-bigWindow.${projectName}`)
+
+    projectsSmallCards.forEach(card => {
+        card.style.display = 'none'
+    })
+
     projectWindow.style.display = 'flex'
 }
 
