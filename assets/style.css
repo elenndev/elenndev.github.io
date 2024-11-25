@@ -897,6 +897,11 @@ section#aboutMe {
                                 justify-self: center;
                                 height: 3rem;
                             }
+                            svg.python{
+                                path{
+                                    fill: rgb(250, 166, 37);
+                                }
+                            }
                         }
 
                     }
