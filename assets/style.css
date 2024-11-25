@@ -971,6 +971,7 @@ a {
                 }
             }
             .smallWindow{
+                width: 100px;
                 right: 10px;
             }
         }
