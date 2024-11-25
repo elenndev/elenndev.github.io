@@ -1,7 +1,9 @@
 let initialPosition = null
 const projectsSmallCards = document.querySelectorAll('.project-smallWindow')
-
-
+const headerHeight = Number(window.getComputedStyle(document.querySelector('header')).height.slice(0,-2))
+console.log(headerHeight)
+const introductionSection = document.querySelector('#introduction')
+introductionSection.style.marginTop = `${headerHeight * 2}px`
 window.addEventListener('load', ()=> {
     const draggableWindow = document.querySelector('.myWindow')
     initialPosition = draggableWindow.getBoundingClientRect()
@@ -73,10 +75,10 @@ function makeDraggable (element) {
 }
 // makeDraggable(document.querySelector('.myWindow'));
 
-window.addEventListener("scroll", ()=>{
-    const element = document.querySelector('#myWindow')
-    element.style.position = 'sticky'
-})
+// window.addEventListener("scroll", ()=>{
+//     const element = document.querySelector('#myWindow')
+//     element.style.position = 'sticky'
+// })
 
 function controlNavbar(element){
     const navbar = document.querySelector('.navbar.items')
