@@ -179,10 +179,10 @@ header {
                 list-style: none;
                 background: #E9E3DC;
                 border: solid 2px var(--bodyBorderColor);
+                box-shadow: 4px 3px 0 var(--bodyBorderColor);
                 padding: 5px 10px;
                 flex-direction: row;
                 height: fit-content;
-                box-shadow: 4px 3px 0 var(--bodyBorderColor);
             }
             li:hover{
                 background: #e4c30a;
@@ -901,6 +901,32 @@ section#aboutMe {
                             svg.python{
                                 path{
                                     fill: rgb(250, 166, 37);
+                                }
+                            }
+                        }
+                        .whereToFindMe{
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            justify-content: center;
+                            margin-top: 10px;
+                            .links{
+                                width: 100%;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: left;
+                                margin-top: 10px;
+                                column-gap: 20px;
+                                a{
+                                    background: #E9E3DC;
+                                    border: solid 2px var(--bodyBorderColor);
+                                    box-shadow: 4px 3px 0 var(--bodyBorderColor);
+                                    padding: 5px 10px;
+                                    border-radius: 5px;
+                                }
+                                a:hover{
+                                    background: #e4c30a;
                                 }
                             }
                         }
