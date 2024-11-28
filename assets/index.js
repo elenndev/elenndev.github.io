@@ -11,37 +11,23 @@ introductionSection.style.marginTop = `${headerHeight * 2}px`
 
 // scroll navbar
 const links = navbar.querySelectorAll('a.toSection')
-
-function goToSection(element) {
-
-    const id_linkTarget = element.getAttribute('href')
-
-    const linkTarget = document.querySelector(id_linkTarget)
-    const controlNavbar = document.querySelector('.control_navbar')
-
-    if (linkTarget) {
-        linkTarget.scrollTo({
-            behavior: "smooth",
+links.forEach((link) => {
+    link.addEventListener('click', () => {
+        const id_linkTarget = link.getAttribute('href')
+        const linkTarget = document.querySelector(id_linkTarget)
+        linkTarget.scrollIntoView({
+            behavior: 'smooth',
             block: 'center'
         })
 
-    }
-
-    if (navbar.classList.contains('visible') || window.getComputedStyle(controlNavbar).dsplay != 'none') {
-        navbar.classList.remove('visible')
-        controlNavbar.classList.remove('toHideNav')
-        controlNavbar.classList.add('toShowNav')
-    }
-
-}
-// links.forEach(link => {
-//     link.addEventListener('click', function (event) {
-//         event.preventDefault()
-
-//     })
-// })
-
-
+        const controlNavbar = document.querySelector('.control_navbar')
+        if (navbar.classList.contains('visible') || window.getComputedStyle(controlNavbar).dsplay != 'none') {
+            navbar.classList.remove('visible')
+            controlNavbar.classList.remove('toHideNav')
+            controlNavbar.classList.add('toShowNav')
+        }
+    })
+})
 
 
 window.addEventListener('load', () => {
@@ -136,8 +122,10 @@ function controlNavbar(element) {
 
 }
 function closeProject(element) {
-    const bigWindow = element.parentElement.parentElement
-    bigWindow.style.display = 'none';
+    const projectWindow = element.parentElement.parentElement
+    projectWindow.style.display = 'none';
+    projectWindow.parentElement.style.removeProperty('min-height');
+
 
     projectsSmallCards.forEach(card => {
         card.style.display = 'flex'
@@ -146,12 +134,16 @@ function closeProject(element) {
 
 function openProject(projectName) {
     const projectWindow = document.querySelector(`.project-bigWindow.${projectName}`)
+    projectWindow.parentElement.style.minHeight = '500px'
 
     projectsSmallCards.forEach(card => {
         card.style.display = 'none'
     })
 
     projectWindow.style.display = 'flex'
+    projectWindow.scrollIntoView({
+        block: 'center'
+    })
 }
 
 function projectViews(element) {

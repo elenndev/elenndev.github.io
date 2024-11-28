@@ -39,8 +39,7 @@ section,.container {
     width: 90%;
     max-height: 95vh;
     max-width: 100vw;
-    scroll-margin-top: 30px;
-    scroll-behavior: smooth;
+    scroll-margin-top: 80px;
 }
 
 .container,#myWindow{
@@ -403,7 +402,6 @@ section#projects {
     align-items: center;
     justify-content: center;
     width: 100vw;
-    margin-bottom: 30px;
 
     .container {
         z-index: 1;
@@ -500,6 +498,7 @@ section#projects {
         }
 
         .card.project-bigWindow {
+            scroll-margin-top: 80px;
             box-shadow: none;
             display: none;
             flex-direction: column;
@@ -507,9 +506,10 @@ section#projects {
             position: absolute;
             top: 0;
             left: 0;
+            min-height: 100%;
+            height: 500px;
             width: 100%;
             max-width: 100%;
-            height: 100%;
             z-index: 3;
             background: var(--bodyColor);
             box-shadow: 9px 8px 0 #1E1E1E;
@@ -793,6 +793,7 @@ section#projects {
 }
 
 section#aboutMe {
+    margin-bottom: 30px;
     scroll-margin-top: 80px;
     display: flex;
     flex-direction: column;
@@ -857,7 +858,9 @@ section#aboutMe {
 
         }
         .content{
-            height: 100%;
+            width: 100%;
+            min-height: 350px;
+            padding-bottom: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -874,11 +877,13 @@ section#aboutMe {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    height: 400px;
+                    height: max-content;
+                    margin: 0 20px;
+                    /* height: 400px; */
                     justify-content: 
                     space-around;
                     .aboutMe-infos{
-                        width: 60%;
+                        width: 100%;
                         display: flex;
                         flex-direction: column;
                         align-items: flex-start;
@@ -888,11 +893,12 @@ section#aboutMe {
                         .skills {
                             width: fit-content;
                             display: flex;
-                            margin-top: 15px;
                             flex-direction: row;
+                            flex-wrap: wrap;
+                            margin: 15px 0;
                             width: 100%;
                             justify-content: left;
-                            column-gap: 20px;
+                            gap: 20px;
                             svg {
                                 display: flex;
                                 justify-self: center;
@@ -915,10 +921,15 @@ section#aboutMe {
                                 width: 100%;
                                 display: flex;
                                 flex-direction: row;
+                                flex-wrap: wrap;
                                 justify-content: left;
                                 margin-top: 10px;
+                                row-gap: 10px;
                                 column-gap: 20px;
                                 a{
+                                    height: fit-content;
+                                    min-width: fit-content;
+                                    width: fit-content;
                                     background: #E9E3DC;
                                     border: solid 2px var(--bodyBorderColor);
                                     box-shadow: 4px 3px 0 var(--bodyBorderColor);
@@ -931,49 +942,6 @@ section#aboutMe {
                             }
                         }
 
-                    }
-                    .smallWindow {
-                        width: 30%;
-                        height: 70%;
-                        max-height: 60%;
-                        display: flex;
-                        background: #E9E3DC;
-                        border: solid var(--bodyBorder) var(--bodyBorderColor);
-                        box-shadow: 6px 5px 0 #1E1E1E;
-                        flex-direction: column;
-        
-                        .window-header {
-                            background: #FF5647;
-                            display: flex;
-                            justify-content: center;
-                            width: 100%;
-                            border-bottom: solid var(--bodyBorder) var(--bodyBorderColor);
-                            height: 50px;
-        
-                            p {
-                                background: #eb4839;
-                                width: 60%;
-                                text-align: center;
-                                color: white;
-                                font-weight: 300;
-                                padding: 2px 0;
-                                padding-bottom: 5px;
-                                border-radius: 25px;
-                                margin: 5px 0;
-                            }
-                        }
-        
-                        .content {
-                            width: 100%;
-                            height: 100%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            background: url(/images/meIcon.webp);
-                            background-size: contain;
-                            background-repeat: no-repeat;
-                            background-position: center;
-                        }
                     }
                 }
         }
@@ -1115,6 +1083,13 @@ a {
             }
         }
     }
+    section#aboutMe>.container{
+        .container-header{
+            .window-name{
+                width: 70%;
+            }
+        }
+    }
 }
 
 @media (max-width: 770px) {
@@ -1183,6 +1158,7 @@ a {
             .content{
                 grid-template-columns: auto;
                 .card.project-smallWindow{
+                    margin-top: 30px;
                     .content{
                         font-size: 1rem;
                         /* text-align: start; */
@@ -1222,9 +1198,6 @@ a {
                     margin-bottom: 10px;                }
                 .aboutMe-content{
                     height: 200px;
-                    align-items: flex-start;
-                    justify-content: left;
-                    margin-left: 10px;
                     .aboutMe-infos{
                         margin-right: 10px;
                         p{
@@ -1277,5 +1250,12 @@ a {
                 font-size: 1rem;
             }
         }
+    }
+}
+
+@media (max-width: 500px){
+    section#aboutMe>.container>.content>.aboutMe-content{
+        min-height: 400px;
+        justify-content: center;
     }
 }
