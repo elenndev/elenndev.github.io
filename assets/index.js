@@ -7,14 +7,16 @@ const navbar = document.querySelector('.navbar.items')
 //margin top do primeiro section
 const headerHeight = Number(window.getComputedStyle(document.querySelector('header')).height.slice(0, -2))
 const introductionSection = document.querySelector('#introduction')
-introductionSection.style.marginTop = `${headerHeight * 2}px`
+introductionSection.style.marginTop = `${headerHeight + 5}px`
 
 // scroll navbar
-const links = navbar.querySelectorAll('a.toSection')
+const links = navbar.querySelectorAll('p.toSection')
 links.forEach((link) => {
     link.addEventListener('click', () => {
-        const id_linkTarget = link.getAttribute('href')
-        const linkTarget = document.querySelector(id_linkTarget)
+        const id_linkTarget = link.classList[1]
+        const linkTarget = document.querySelector(`#${id_linkTarget}`)
+        console.log(linkTarget)
+
         linkTarget.scrollIntoView({
             behavior: 'smooth',
             block: 'center'
