@@ -1,13 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
 
+:root{
+    --bodyBorderColor: #221D1A;
+    --bodyBorder: 1px;
+    --secondaryColor: #E9E3DC;
+    --shadowColor: #221D1A;
+    --textColor: #1E1E1E; 
+
+}
+
 * {
     margin: 0;
     padding: 0;
     font-size: 16px;
-    --bodyBorder: 1px;
-    --bodyBorderColor: #221D1A;
-    --bodyColor: #D5D5D6;
+    /* --bodyColor: #D5D5D6; */
+    /* --bodyColor: #2b2b2b; */
+}
+html{
+    color-scheme: dark light;
 }
 
 body {
@@ -129,6 +140,56 @@ header {
     justify-content: space-between;
     
 
+
+    
+    input[type="checkbox"]{
+        visibility: hidden;
+    }
+    
+    input[type="checkbox"]:checked ~.check{
+        background: red;
+    }
+    
+
+    input[type="checkbox"]:checked ~.check::after{
+        transform: translateX(0px);
+    }
+    
+    .check{
+        position:  relative;
+        display: block;
+        width: 50px;
+        height: 30px;
+        background: black;
+        cursor: pointer;
+        border-radius:  20px;
+        overflow: hidden;
+        transition: ease-in 0.5s;
+    }
+    .check::before{
+        content: '';
+        position: absolute;
+        top: 3px;
+        background: purple;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        transition: 0.5s;
+    }
+
+    .check::after{
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        background: grey;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        transition: 0.5s;
+        transform: translateX(50px);
+    }
+
     p,
     nav {
         margin-top: 10px;
@@ -151,9 +212,9 @@ header {
             justify-content: center;
             row-gap: 10px;
             .line{
-                background: #E9E3DC;
+                background: var(--secondaryColor);
                 border: solid 3px var(--bodyBorderColor);
-                box-shadow: 3px 4px 0 var(--bodyBorderColor);
+                box-shadow: 3px 4px 0 var(--shadowColor);
                 width: 50px;
                 border-radius: 25px;
                 height: 5px;
@@ -177,9 +238,9 @@ header {
                 border-radius: 5px;
                 cursor: pointer;
                 list-style: none;
-                background: #E9E3DC;
+                background: var(--secondaryColor);
                 border: solid 2px var(--bodyBorderColor);
-                box-shadow: 4px 3px 0 var(--bodyBorderColor);
+                box-shadow: 4px 3px 0 var(--shadowColor);
                 padding: 5px 10px;
                 flex-direction: row;
                 height: fit-content;
@@ -187,6 +248,7 @@ header {
                     font-size: 16px;
                     font-weight: normal;
                     margin: 0;
+                    color: black;
                 }
             }
             li:hover{
@@ -199,7 +261,9 @@ header {
         font-size: 2.5rem;
         font-weight: 800;
         letter-spacing: 2px;
-        color: #1E1E1E;
+    }
+    p.myname{
+        color: var(--textColor);
     }
 
     .navbar.items.visible{
@@ -334,7 +398,7 @@ section#introduction {
 
                 h1,
                 p {
-                    color: #1E1E1E;
+                    color: var(--bodyBorderColor);
                     animation: enterHelloTexts 2s normal;
                 }
 
@@ -354,8 +418,8 @@ section#introduction {
                     display: flex;
                     text-align: center;
                     font-family: monospace;
-                    background: #E9E3DC;
-                    box-shadow: 6px 5px 0 #1E1E1E;
+                    background: var(--secondaryColor);
+                    box-shadow: 6px 5px 0 var(--shadowColor);
                     border: solid 3px var(--bodyBorderColor);
                     position: relative;
                 }
@@ -366,9 +430,9 @@ section#introduction {
                 height: 300px;
                 margin-left: 20px;
                 display: flex;
-                background: #E9E3DC;
+                background: var(--secondaryColor);
                 border: solid var(--bodyBorder) var(--bodyBorderColor);
-                box-shadow: 6px 5px 0 #1E1E1E;
+                box-shadow: 6px 5px 0 var(--shadowColor);
                 transform: translateY(-50px);
                 flex-direction: column;
                 animation: enterSmallCard 2s normal;
@@ -450,7 +514,7 @@ section#projects {
 
                 p {
                     font-size: 2rem;
-                    color: #1E1E1E;
+                    color: var(--textColor);
                     font-weight: 500;
                     letter-spacing: 2px;
                     text-transform: uppercase;
@@ -465,7 +529,7 @@ section#projects {
                 }
 
                 #vector {
-                    fill: #1E1E1E;
+                    fill: var(--textColor);
                 }
 
             }
@@ -485,7 +549,7 @@ section#projects {
             border: solid var(--bodyBorder) var(--bodyBorderColor);
             justify-self: center;
             align-self: center;
-            box-shadow: 9px 8px 0 #1E1E1E;
+            box-shadow: 9px 8px 0 var(--shadowColor);
 
             .card-header {
                 display: flex;
@@ -528,7 +592,7 @@ section#projects {
             max-width: 100%;
             z-index: 3;
             background: var(--bodyColor);
-            box-shadow: 9px 8px 0 #1E1E1E;
+            box-shadow: 9px 8px 0 var(--shadowColor);
 
             .card-header {
                 position: relative;
@@ -582,7 +646,7 @@ section#projects {
                     height: 500px;
                     min-height: max-content;
                     position: relative;
-                    background: #E9E3DC;
+                    background: var(--secondaryColor);
                     box-shadow: 9px 8px 0 #1E1E1E;
                     border: solid var(--bodyBorder) var(--bodyBorderColor);
 
@@ -620,7 +684,7 @@ section#projects {
                             align-items: center;
                             justify-content: center;
                             border: solid 3px var(--bodyBorderColor);
-                            background: #E9E3DC;
+                            background: var(--secondaryColor);
 
 
                             svg {
@@ -647,23 +711,23 @@ section#projects {
                         }
 
                         button.prev {
-                            box-shadow: 4px 4px 0 var(--bodyBorderColor);
+                            box-shadow: 4px 4px 0 var(--shadowColor);
                             margin-left: 10px;
                         }
 
                         button.next {
-                            box-shadow: -4px 4px 0 var(--bodyBorderColor);
+                            box-shadow: -4px 4px 0 var(--shadowColor);
                             margin-right: 10px;
                         }
 
                         button.prev:active {
                             transform: translate(4px);
-                            box-shadow: 2px 2px 0 var(--bodyBorderColor);
+                            box-shadow: 2px 2px 0 var(--shadowColor);
                         }
 
                         button.next:active {
                             transform: translate(-4px);
-                            box-shadow: -2px 2px 0 var(--bodyBorderColor);
+                            box-shadow: -2px 2px 0 var(--shadowColor);
                         }
 
                         ul {
@@ -722,7 +786,7 @@ section#projects {
                             padding: 0 15px;
                             border: solid var(--bodyBorder) var(--bodyBorderColor);
                             border-radius: 5px;
-                            box-shadow: 4px 3px 0 var(--bodyBorderColor);
+                            box-shadow: 4px 3px 0 var(--shadowColor);
                             background-size: 200% 100%;
                             transition: transform 0.5s ease-in;
                         }
@@ -849,7 +913,7 @@ section#aboutMe {
 
                 p {
                     font-size: 2rem;
-                    color: #1E1E1E;
+                    color: var(--textColor);
                     font-weight: 500;
                     letter-spacing: 2px;
                     text-transform: uppercase;
@@ -867,7 +931,7 @@ section#aboutMe {
                 }
 
                 #vector {
-                    fill: #1E1E1E;
+                    fill: var(--textColor);
                 }
 
             }
@@ -949,9 +1013,9 @@ section#aboutMe {
                                     height: fit-content;
                                     min-width: fit-content;
                                     width: fit-content;
-                                    background: #E9E3DC;
+                                    background: var(--secondaryColor);
                                     border: solid 2px var(--bodyBorderColor);
-                                    box-shadow: 4px 3px 0 var(--bodyBorderColor);
+                                    box-shadow: 4px 3px 0 var(--shadowColor);
                                     padding: 5px 10px;
                                     border-radius: 5px;
                                 }
@@ -983,7 +1047,7 @@ section#aboutMe {
         height: var(--Size);
         width: var(--Size);
         border-radius: 50%;
-        background: #1E1E1E;
+        background: var(--bodyBorderColor);
     }
 }
 
@@ -1036,6 +1100,63 @@ a {
         margin-right: 0;
     }
 }
+
+
+@media (prefers-color-scheme: dark){
+    :root {
+        --bodyBorderColor: white;
+        --bodyColor: #2b2b2b;   
+        --textColor: #E9E3DC; 
+        --secondaryColor: #b7b1aa;
+
+    }
+    section#introduction{
+        .window>.window-content{
+            .text-hello{
+                h1{
+                    color: #f3f3f3;
+                }
+                p{
+                    color: var(--bodyColor);
+                }
+            }
+            .smallWindow{
+                background: #E9E3DC;
+            }
+        }
+    }
+    section#projects{
+        .content>.project-smallWindow>.card-header>button>svg{
+            fill: var(--bodyBorderColor);
+        }
+        .content>.card.project-bigWindow>.content{
+            .project-view{
+                --bodyBorderColor: #221D1A;
+            }
+            .project-description{
+                a{
+                    color: white;
+                    text-decoration-color: rgba(255, 255, 255, 0.486);
+                }
+
+            }
+        }
+    }
+    section#aboutMe{
+        svg.photoshop{
+            path{
+                fill: #0e53bb;
+            }
+        }
+    }
+}
+
+@media (prefers-color-scheme: light){
+    :root {
+        --bodyColor: #D5D5D6;
+    }
+}
+
 
 @media (max-width: 1365px) {
     section#introduction>#myWindow {
@@ -1141,7 +1262,6 @@ a {
         }
     }
 }
-
 
 @media (max-width: 770px) {
     section#introduction::before{

@@ -36,6 +36,15 @@ window.addEventListener('load', () => {
     const draggableWindow = document.querySelector('.myWindow')
     initialPosition = draggableWindow.getBoundingClientRect()
 
+    // Detecta o tema atual
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (isDarkMode) {
+    console.log('O tema atual é escuro.');
+    } else {
+    console.log('O tema atual é claro.');
+    }
+
 
 })
 
