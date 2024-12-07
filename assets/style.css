@@ -7,7 +7,7 @@
     --secondaryColor: #E9E3DC;
     --shadowColor: #221D1A;
     --textColor: #1E1E1E; 
-
+    --bodyColor: #D5D5D6
 }
 
 * {
@@ -138,57 +138,186 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
+    .controls{
+        position: relative;
+        max-height: 100%;
+        width: max-content;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 20px;
+        .change_theme{
+            display: inline-block;
+            position: relative;
+            width: 50px;
+            height: 25px;
+            /* background: black; */
+        }
+        input[type="checkbox"]{
+            visibility: hidden;
+            display: none;
+        }
+    
+        .handle_changeTheme{
+            position: absolute;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            background: #2b2b2b;
+            transition: background 0.3s;
+        }
+        
+    
+        .check{
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 21px;
+            height: 21px;
+            background: var(--bodyColor);
+            border-radius: 50%;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    
+    
+        /* quando modo noturno estiver on */
+        input[type="checkbox"]:checked + .handle_changeTheme{
+            background: #b7b1aa;
+        }
+    
+        input[type="checkbox"]:checked + .handle_changeTheme .check {
+            transform: translateX(25px);
+            background: #2b2b2b;
+        }
+
+        .control_navbar{
+            display: none;
+            width: 100px;
+            z-index: 5;
+            height: fit-content;
+            .lines {
+                width: 100px;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                row-gap: 10px;
+                .line{
+                    background: var(--secondaryColor);
+                    border: solid 3px var(--bodyBorderColor);
+                    box-shadow: 3px 4px 0 var(--shadowColor);
+                    width: 50px;
+                    border-radius: 25px;
+                    height: 5px;
+                }
+            }
+        }
+    
+        nav {
+            display: flex;
+            width: fit-content;
+            flex-direction: row;
+            margin-right: 10px;
+    
+            ul {
+                display: flex;
+                flex-direction: row;
+                column-gap: 10px;
+    
+                li {
+                    border-radius: 5px;
+                    cursor: pointer;
+                    list-style: none;
+                    background: var(--secondaryColor);
+                    border: solid 2px var(--bodyBorderColor);
+                    box-shadow: 4px 3px 0 var(--shadowColor);
+                    padding: 5px 10px;
+                    flex-direction: row;
+                    height: fit-content;
+                    p,a{
+                        font-size: 16px;
+                        font-weight: normal;
+                        margin: 0;
+                        color: black;
+                    }
+                }
+                li:hover{
+                    background: #e4c30a;
+                }
+            }
+        }
+        .navbar.items.visible{
+            position: absolute;
+            right: -5%;
+            top: -10%;
+            background: var(--bodyColor);
+            box-shadow: 0 10px 30px 40px  rgba(0, 0, 0, 0.377);
+            height: 100vh;
+            width: 50vw;
+            flex-direction: column;
+            row-gap: 10px;
+            align-items: center;
+            z-index: 4;
+            padding-top: 130px;
+            padding-right: 5%;
+            li{
+                display: flex;
+                width: 80%;
+            }
+        }
+    
+        .control_navbar.toHideNav{
+            .line1{
+                position: absolute;
+                transform: rotate(47deg);
+            }
+            .line2{
+                position: absolute;
+                transform: rotate(-47deg);
+            }
+            .line3{
+                display: none;
+            }
+        }    .navbar.items.visible{
+            position: absolute;
+            right: -5%;
+            top: -10%;
+            background: var(--bodyColor);
+            box-shadow: 0 10px 30px 40px  rgba(0, 0, 0, 0.377);
+            height: 100vh;
+            width: 50vw;
+            flex-direction: column;
+            row-gap: 10px;
+            align-items: center;
+            z-index: 4;
+            padding-top: 130px;
+            padding-right: 5%;
+            li{
+                display: flex;
+                width: 80%;
+            }
+        }
+    
+        .control_navbar.toHideNav{
+            .line1{
+                position: absolute;
+                transform: rotate(47deg);
+            }
+            .line2{
+                position: absolute;
+                transform: rotate(-47deg);
+            }
+            .line3{
+                display: none;
+            }
+        }
+    }
     
 
-
-    
-    input[type="checkbox"]{
-        visibility: hidden;
-    }
-    
-    input[type="checkbox"]:checked ~.check{
-        background: red;
-    }
-    
-
-    input[type="checkbox"]:checked ~.check::after{
-        transform: translateX(0px);
-    }
-    
-    .check{
-        position:  relative;
-        display: block;
-        width: 50px;
-        height: 30px;
-        background: black;
-        cursor: pointer;
-        border-radius:  20px;
-        overflow: hidden;
-        transition: ease-in 0.5s;
-    }
-    .check::before{
-        content: '';
-        position: absolute;
-        top: 3px;
-        background: purple;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        transition: 0.5s;
-    }
-
-    .check::after{
-        content: '';
-        position: absolute;
-        top: 3px;
-        left: 3px;
-        background: grey;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        transition: 0.5s;
-        transform: translateX(50px);
-    }
 
     p,
     nav {
@@ -199,63 +328,7 @@ header {
         margin: 10px 20px;
     }
 
-    .control_navbar{
-        display: none;
-        width: 100px;
-        z-index: 5;
-        height: fit-content;
-        .lines {
-            width: 100px;
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            row-gap: 10px;
-            .line{
-                background: var(--secondaryColor);
-                border: solid 3px var(--bodyBorderColor);
-                box-shadow: 3px 4px 0 var(--shadowColor);
-                width: 50px;
-                border-radius: 25px;
-                height: 5px;
-            }
-        }
-    }
 
-
-    nav {
-        display: flex;
-        width: fit-content;
-        flex-direction: row;
-        margin-right: 10px;
-
-        ul {
-            display: flex;
-            flex-direction: row;
-            column-gap: 10px;
-
-            li {
-                border-radius: 5px;
-                cursor: pointer;
-                list-style: none;
-                background: var(--secondaryColor);
-                border: solid 2px var(--bodyBorderColor);
-                box-shadow: 4px 3px 0 var(--shadowColor);
-                padding: 5px 10px;
-                flex-direction: row;
-                height: fit-content;
-                p,a{
-                    font-size: 16px;
-                    font-weight: normal;
-                    margin: 0;
-                    color: black;
-                }
-            }
-            li:hover{
-                background: #e4c30a;
-            }
-        }
-    }
 
     p {
         font-size: 2.5rem;
@@ -266,39 +339,7 @@ header {
         color: var(--textColor);
     }
 
-    .navbar.items.visible{
-        position: absolute;
-        right: -5%;
-        top: -10%;
-        background: var(--bodyColor);
-        box-shadow: 0 10px 30px 40px  rgba(0, 0, 0, 0.377);
-        height: 100vh;
-        width: 50vw;
-        flex-direction: column;
-        row-gap: 10px;
-        align-items: center;
-        z-index: 4;
-        padding-top: 130px;
-        padding-right: 5%;
-        li{
-            display: flex;
-            width: 80%;
-        }
-    }
 
-    .control_navbar.toHideNav{
-        .line1{
-            position: absolute;
-            transform: rotate(47deg);
-        }
-        .line2{
-            position: absolute;
-            transform: rotate(-47deg);
-        }
-        .line3{
-            display: none;
-        }
-    }
 }
 
 
@@ -389,6 +430,7 @@ section#introduction {
                 display: flex;
                 height: 100%;
                 margin-bottom: 20px;
+                margin-top: 10px;
                 width: 100%;
                 row-gap: 10px;
                 flex-direction: column;
@@ -1101,14 +1143,14 @@ a {
     }
 }
 
-
-@media (prefers-color-scheme: dark){
-    :root {
+body.dark-theme{
+    background: #2b2b2b;
+    *{
         --bodyBorderColor: white;
         --bodyColor: #2b2b2b;   
         --textColor: #E9E3DC; 
         --secondaryColor: #b7b1aa;
-
+    
     }
     section#introduction{
         .window>.window-content{
@@ -1118,6 +1160,7 @@ a {
                 }
                 p{
                     color: var(--bodyColor);
+                    background: #dfdad5;
                 }
             }
             .smallWindow{
@@ -1138,7 +1181,7 @@ a {
                     color: white;
                     text-decoration-color: rgba(255, 255, 255, 0.486);
                 }
-
+    
             }
         }
     }
@@ -1149,13 +1192,84 @@ a {
             }
         }
     }
+
+    header > .controls > nav > ul > li, 
+    #myWindow > div.window-content > span.text-hello > p,
+    section#aboutMe > .container > .content > .aboutMe-content > .aboutMe-infos > .whereToFindMe > .links > a{
+        border-color: #57524c;
+    }
+
+    header > .controls > nav >.control_navbar > .lines > .line{
+        background: var(--bodyColor);
+        border-color: var(--secondaryColor)
+    }
+
+    section#aboutMe> div > div.content > div > div{
+        p, .whereToFindMe>p{
+            color: white;
+        }
+    }
+    section#projects > div > div > div.card.project-smallWindow{
+        .card-header>p, .content{
+            color: white;
+
+        }
+    }
+    section#projects > div > div > div.card.project-bigWindow{
+        .card-header>p, .card-header>button, .content>.project-description>p, .content>.project-description>ul>li{
+            color: white;
+
+        }
+    }
+    section#projects > div > div > div.card.project-bigWindow > .content{
+        .project-view{
+            --secondaryColor: #E9E3DC;
+            .galery{
+                button{
+                    border-color: var(--shadowColor);
+                    background: #E9E3DC
+                }
+            }
+            .links-area > a{
+                border-color: var(--shadowColor);
+            }
+        }
+    } 
 }
 
-@media (prefers-color-scheme: light){
+body.light-theme{
+    *{
+        --bodyColor: #D5D5D6;
+    }
+    section#aboutMe> div > div.content > div > div{
+        p, .whereToFindMe>p{
+            color: black;
+        }
+    }
+    section#projects > div > div > div.card.project-smallWindow{
+        .card-header>p, .content{
+            color: black;
+        }
+    }
+
+    section#projects > div > div > div.card.project-bigWindow{
+        .card-header>p, .card-header>button, .content>.project-description>p, .content>.project-description>ul>li{
+            color: black;
+        }
+    }
+}
+
+/* @media (prefers-color-scheme: dark){
+    :root{
+        --bodyColor: #2b2b2b;   
+    }
+} */
+
+/* @media (prefers-color-scheme: light){
     :root {
         --bodyColor: #D5D5D6;
     }
-}
+} */
 
 
 @media (max-width: 1365px) {
@@ -1291,7 +1405,7 @@ a {
     }
 
     section#introduction {
-        header {
+        header > .controls{
             .buttonNavbar {
                 display: flex;
                 height: 40%;
@@ -1300,11 +1414,20 @@ a {
         }
     }
 
-    header {
+    header > .controls{
         nav {
-            ul>li {
-                display: none;
-                width: fit-content;
+            ul{
+                li {
+                    display: none;
+                    width: fit-content;
+                }
+
+            }
+            ul.navbar.items.visible{
+                height: 100vh;
+                position: absolute;
+                right: 0;
+                margin-top: -50px;
             }
             .control_navbar{
                 display: flex;

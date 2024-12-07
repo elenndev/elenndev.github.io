@@ -1,4 +1,5 @@
 let initialPosition = null
+let theme = null
 const projectsSmallCards = document.querySelectorAll('.project-smallWindow')
 const navbar = document.querySelector('.navbar.items')
 
@@ -36,15 +37,16 @@ window.addEventListener('load', () => {
     const draggableWindow = document.querySelector('.myWindow')
     initialPosition = draggableWindow.getBoundingClientRect()
 
-    // Detecta o tema atual
+
     const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     if (isDarkMode) {
-    console.log('O tema atual é escuro.');
-    } else {
-    console.log('O tema atual é claro.');
-    }
-
+    theme = 'dark'
+    document.querySelector('#theme-toggle').checked = true
+} else {
+    theme = 'light'
+}
+document.body.classList.add(`${theme}-theme`)
 
 })
 
@@ -115,6 +117,18 @@ function makeDraggable(element) {
 //     const element = document.querySelector('#myWindow')
 //     element.style.position = 'sticky'
 // })
+
+function changeTheme(){
+    if (theme == 'dark'){
+        document.body.classList.remove("dark-theme")
+        document.body.classList.add("light-theme")
+        theme = 'light'
+    } else {
+        document.body.classList.remove("light-theme")
+        document.body.classList.add("dark-theme")
+        theme = 'dark'
+    }
+}
 
 function controlNavbar(element) {
     if (navbar.classList.contains('visible')) {
