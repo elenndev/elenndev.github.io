@@ -9,6 +9,128 @@ const navbar = document.querySelector('.navbar.items')
 const headerHeight = Number(window.getComputedStyle(document.querySelector('header')).height.slice(0, -2))
 const introductionSection = document.querySelector('#introduction')
 introductionSection.style.marginTop = `${headerHeight + 5}px`
+const aboutMeSection = document.querySelector('#aboutMe')
+const projectsSection = document.querySelector('#projects')
+
+// animacoes
+const smallWindow = introductionSection.querySelector(".smallWindow")
+const helloTexts = introductionSection.querySelectorAll(".text-hello>.text")
+function moveIn_smallWindow(){
+    gsap.fromTo(smallWindow, {
+        x: -50,
+        opacity: 1},
+        {x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out"}
+    );
+}
+function moveOut_smallWindow(){
+    gsap.fromTo(smallWindow, {
+        x: 0,
+        opacity: 1},
+        {x: -50,
+        opacity: 0,
+        duration: 1,
+        ease: "sine.inOut"}
+    );
+}
+function moveIn_helloTexts(){
+    helloTexts.forEach((e)=>{
+        gsap.fromTo(e, {
+            x: 50,
+            opacity: 1},
+            {x: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out"}
+        );
+    })
+}
+function moveOut_helloTexts(){
+    helloTexts.forEach((e)=>{
+        gsap.fromTo(e, {
+            x: 0,
+            opacity: 1},
+            {x: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "sine.inOut"}
+        );
+    })
+}
+function moveIn_section(section, isLeft){
+    const x_value = isLeft? 50 : -50
+    const container = section.querySelector('.container')
+    const delay = section.id == 'aboutMe'? 0.25 : 0
+    gsap.fromTo(container, {
+        x: x_value,
+        opacity: 0},
+        {x: 0,
+        opacity: 1,
+        delay: delay,
+        duration: 0.5,
+        ease: "power2.out"}
+    );
+}
+function moveOut_section(section, isLeft){
+    const x_value = isLeft? 50 : -50
+    const container = section.querySelector('.container')
+    gsap.fromTo(container, {
+        x: 0,
+        opacity: 1},
+        {x: x_value,
+        opacity: 0,
+        duration: 0.50,
+        ease: "power2.out"}
+    );
+}
+
+
+function animation_moveIn(element){
+    const id = element.id
+    switch (id){
+        case 'introduction':
+            moveIn_smallWindow()
+            moveIn_helloTexts()
+            moveIn_section(element, true)
+            break;
+        case 'aboutMe':
+            moveIn_section(element, false)
+            break;
+        case 'projects':
+            moveIn_section(element, true)
+            break;
+    }
+}
+function animation_moveOut(element){
+    const id = element.id
+    switch (id){
+        case 'introduction':
+            moveOut_smallWindow()
+            moveOut_helloTexts()
+            moveOut_section(element, true)
+            break;
+        case 'aboutMe':
+            moveOut_section(element, false)
+            break;
+        case 'projects':
+            moveOut_section(element, true)
+            break;
+    }
+}
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animation_moveIn(entry.target)
+        } else {
+            animation_moveOut(entry.target)
+        }
+    });
+}, { threshold: 0.25 }); 
+observer.observe(introductionSection);
+observer.observe(aboutMeSection);
+observer.observe(projectsSection);
 
 // scroll navbar
 const links = navbar.querySelectorAll('p.toSection')
@@ -16,7 +138,6 @@ links.forEach((link) => {
     link.addEventListener('click', () => {
         const id_linkTarget = link.classList[1]
         const linkTarget = document.querySelector(`#${id_linkTarget}`)
-        console.log(linkTarget)
 
         linkTarget.scrollIntoView({
             behavior: 'smooth',
@@ -36,8 +157,6 @@ links.forEach((link) => {
 window.addEventListener('load', () => {
     const draggableWindow = document.querySelector('.myWindow')
     initialPosition = draggableWindow.getBoundingClientRect()
-
-
     const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     if (isDarkMode) {
@@ -50,73 +169,6 @@ document.body.classList.add(`${theme}-theme`)
 
 })
 
-function makeDraggable(element) {
-    let currentPosX = 0, currentPosY = 0, previousPosX = 0, previousPosY = 0;
-
-
-    element.querySelector('.window-top').onmousedown = dragMouseDown;
-
-    function resetDragElement() {
-        element.style.position = 'sticky'
-        currentPosX = 0; currentPosY = 0; previousPosX = 0; previousPosY = 0;
-
-        element.style.top = `${initialPosition.top}px`;
-        element.style.bottom = `${initialPosition.bottom}px`;
-        element.style.left = `${initialPosition.left}px`;
-        element.style.right = `${initialPosition.right}px`;
-    }
-
-    window.addEventListener("scroll", () => {
-        resetDragElement()
-        stopDragElement()
-    })
-
-
-    function dragMouseDown(e) {
-        e.preventDefault();
-        previousPosX = e.clientX;
-        previousPosY = e.clientY;
-
-        document.onmouseup = stopDragElement;
-        document.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e) {
-        e.preventDefault();
-        currentPosX = previousPosX - e.clientX;
-        currentPosY = previousPosY - e.clientY;
-
-        previousPosX = e.clientX;
-        previousPosY = e.clientY;
-
-        const rightLimit = window.innerWidth - e.clientX
-        const bottomLimit = window.innerHeight - e.clientY
-
-        if (e.clientX == 0 || rightLimit == 0 || e.clientY == 0 || bottomLimit == 50) {
-
-            resetDragElement()
-            stopDragElement()
-        }
-
-        element.style.position = 'fixed'
-        element.style.top = (element.offsetTop - currentPosY) + 'px';
-        element.style.left = (element.offsetLeft - currentPosX) + 'px';
-
-    }
-
-    function stopDragElement() {
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
-
-
-}
-// makeDraggable(document.querySelector('.myWindow'));
-
-// window.addEventListener("scroll", ()=>{
-//     const element = document.querySelector('#myWindow')
-//     element.style.position = 'sticky'
-// })
 
 function changeTheme(){
     if (theme == 'dark'){
