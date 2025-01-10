@@ -153,7 +153,17 @@ observer.observe(aboutMeSection);
 observer.observe(projectsSection);
 
 // scroll navbar
-const links = navbar.querySelectorAll('p.toSection')
+
+function closeNavbar(){
+    const controlNavbar = document.querySelector('.control_navbar')
+    console.log('b')
+    if (navbar.classList.contains('visible') || window.getComputedStyle(controlNavbar).dsplay != 'none') {
+        navbar.classList.remove('visible')
+        controlNavbar.classList.remove('toHideNav')
+        controlNavbar.classList.add('toShowNav')
+    }
+}
+const links = navbar.querySelectorAll('a.toSection')
 links.forEach((link) => {
     link.addEventListener('click', () => {
         const id_linkTarget = link.classList[1]
@@ -165,12 +175,12 @@ links.forEach((link) => {
             block: 'center'
         })
 
-        const controlNavbar = document.querySelector('.control_navbar')
-        if (navbar.classList.contains('visible') || window.getComputedStyle(controlNavbar).dsplay != 'none') {
-            navbar.classList.remove('visible')
-            controlNavbar.classList.remove('toHideNav')
-            controlNavbar.classList.add('toShowNav')
-        }
+        // const controlNavbar = document.querySelector('.control_navbar')
+        // if (navbar.classList.contains('visible') || window.getComputedStyle(controlNavbar).dsplay != 'none') {
+        //     navbar.classList.remove('visible')
+        //     controlNavbar.classList.remove('toHideNav')
+        //     controlNavbar.classList.add('toShowNav')
+        // }
     })
 })
 
