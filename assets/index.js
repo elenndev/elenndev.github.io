@@ -17,6 +17,13 @@ const p = introductionSection.querySelector('.text-hello>p')
 const aboutMeSection = document.querySelector('#aboutMe')
 const projectsSection = document.querySelector('#projects')
 
+function onWindowResize() {
+    h1.style.height = 'auto'
+    
+}
+
+window.addEventListener('resize', onWindowResize);
+
 // animacoes
 const smallWindow = introductionSection.querySelector(".smallWindow")
 const helloTexts = introductionSection.querySelectorAll(".text-hello>.text")
@@ -45,6 +52,7 @@ function moveIn_helloTexts(){
     // remove o conteudo pra animar
     let h1altura = getComputedStyle(h1).height
     h1.style.height = h1altura
+    console.log(h1altura)
     h1.textContent = ''
     gsap.fromTo(p, {
         x: 50,
