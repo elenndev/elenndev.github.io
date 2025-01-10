@@ -18,7 +18,7 @@ const aboutMeSection = document.querySelector('#aboutMe')
 const projectsSection = document.querySelector('#projects')
 
 function onWindowResize() {
-    h1.style.height = 'fit-content'
+    h1.style.minHeight = 'fit-content'
 }
 
 window.addEventListener('resize', onWindowResize);
@@ -51,7 +51,6 @@ function moveIn_helloTexts(){
     // remove o conteudo pra animar
     let h1altura = getComputedStyle(h1).height
     h1.style.height = h1altura
-    console.log(h1altura)
     h1.textContent = ''
     gsap.fromTo(p, {
         x: 50,
@@ -70,9 +69,6 @@ function moveIn_helloTexts(){
 
 }
 function moveOut_helloTexts(){
-    let h1altura = getComputedStyle(h1).height
-    h1.style.height = h1altura
-    console.log(h1altura)
     gsap.fromTo(p, {
         x: 0,
         opacity: 1},
@@ -81,11 +77,11 @@ function moveOut_helloTexts(){
         duration: 1,
         ease: "sine.inOut"}
     );
-    gsap.to(h1, {
-        duration: 0.5,
-        text: " ",
-        ease: "none"
-    })
+    // gsap.to(h1, {
+    //     duration: 0.5,
+    //     text: " ",
+    //     ease: "none"
+    // })
     
 }
 
