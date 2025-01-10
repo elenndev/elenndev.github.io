@@ -11,7 +11,7 @@ const navbar = document.querySelector('.navbar.items')
 const headerHeight = Number(window.getComputedStyle(document.querySelector('header')).height.slice(0, -2))
 const introductionSection = document.querySelector('#introduction')
 introductionSection.style.marginTop = `${headerHeight + 5}px`
-const h1 = introductionSection.querySelector('h1')
+let h1 = introductionSection.querySelector('h1')
 const h1Content = h1.textContent
 const p = introductionSection.querySelector('.text-hello>p')
 const aboutMeSection = document.querySelector('#aboutMe')
@@ -43,6 +43,8 @@ function moveOut_smallWindow(){
 
 function moveIn_helloTexts(){
     // remove o conteudo pra animar
+    let h1altura = getComputedStyle(h1).height
+    h1.style.height = h1altura
     h1.textContent = ''
     gsap.fromTo(p, {
         x: 50,
@@ -70,7 +72,7 @@ function moveOut_helloTexts(){
         ease: "sine.inOut"}
     );
     gsap.to(h1, {
-        duration: h1Content.length * 0.50,
+        duration: 0.5,
         text: " ",
         ease: "none"
     })
@@ -156,6 +158,7 @@ links.forEach((link) => {
     link.addEventListener('click', () => {
         const id_linkTarget = link.classList[1]
         const linkTarget = document.querySelector(`#${id_linkTarget}`)
+        console.log('test')
 
         linkTarget.scrollIntoView({
             behavior: 'smooth',

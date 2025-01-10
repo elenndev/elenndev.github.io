@@ -647,13 +647,17 @@ section#projects {
                     font-size: 2rem;
                     font-weight: 600;
                     color: var(--bodyBorderColor);
+                    display: flex;
+                    margin-right: 5px;
+                    max-width: 90%;
+                    flex-wrap: wrap;
                 }
 
                 button {
                     background: none;
                     position: absolute;
                     align-self: center;
-                    right: 20px;
+                    right: 15px;
                     font-weight: 500;
                     font-size: 1.5rem;
                     height: fit-content;
@@ -946,7 +950,7 @@ section#aboutMe {
     scroll-margin-top: 80px;
     display: flex;
     flex-direction: column;
-    height: fit-content;
+    height: max-content;
     align-items: center;
     justify-content: center;
 
