@@ -1,3 +1,5 @@
+gsap.registerPlugin(TextPlugin);
+
 let initialPosition = null
 let theme = null
 const projectsSmallCards = document.querySelectorAll('.project-smallWindow')
@@ -9,6 +11,9 @@ const navbar = document.querySelector('.navbar.items')
 const headerHeight = Number(window.getComputedStyle(document.querySelector('header')).height.slice(0, -2))
 const introductionSection = document.querySelector('#introduction')
 introductionSection.style.marginTop = `${headerHeight + 5}px`
+const h1 = introductionSection.querySelector('h1')
+const h1Content = h1.textContent
+const p = introductionSection.querySelector('.text-hello>p')
 const aboutMeSection = document.querySelector('#aboutMe')
 const projectsSection = document.querySelector('#projects')
 
@@ -35,30 +40,43 @@ function moveOut_smallWindow(){
         ease: "sine.inOut"}
     );
 }
+
 function moveIn_helloTexts(){
-    helloTexts.forEach((e)=>{
-        gsap.fromTo(e, {
-            x: 50,
-            opacity: 1},
-            {x: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out"}
-        );
+    // remove o conteudo pra animar
+    h1.textContent = ''
+    gsap.fromTo(p, {
+        x: 50,
+        opacity: 1},
+        {x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out"}
+    );
+
+    gsap.to(h1, {
+        duration: h1Content.length * 0.1,
+        text: h1Content,
+        ease: "none"
     })
+
 }
 function moveOut_helloTexts(){
-    helloTexts.forEach((e)=>{
-        gsap.fromTo(e, {
-            x: 0,
-            opacity: 1},
-            {x: 50,
-            opacity: 0,
-            duration: 1,
-            ease: "sine.inOut"}
-        );
+    gsap.fromTo(p, {
+        x: 0,
+        opacity: 1},
+        {x: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "sine.inOut"}
+    );
+    gsap.to(h1, {
+        duration: h1Content.length * 0.50,
+        text: " ",
+        ease: "none"
     })
+    
 }
+
 function moveIn_section(section, isLeft){
     const x_value = isLeft? 50 : -50
     const container = section.querySelector('.container')
