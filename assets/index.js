@@ -18,8 +18,7 @@ const aboutMeSection = document.querySelector('#aboutMe')
 const projectsSection = document.querySelector('#projects')
 
 function onWindowResize() {
-    h1.style.height = 'auto'
-    
+    h1.style.height = 'fit-content'
 }
 
 window.addEventListener('resize', onWindowResize);
@@ -71,6 +70,9 @@ function moveIn_helloTexts(){
 
 }
 function moveOut_helloTexts(){
+    let h1altura = getComputedStyle(h1).height
+    h1.style.height = h1altura
+    console.log(h1altura)
     gsap.fromTo(p, {
         x: 0,
         opacity: 1},
