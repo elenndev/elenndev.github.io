@@ -700,6 +700,7 @@ section#projects {
 
                     img.project-image{
                         margin-top: 40px;
+                        width: 90%;
                     }
 
                     .window-header {
@@ -718,7 +719,7 @@ section#projects {
                         display: flex;
                         flex-direction: row;
                         align-items: center;
-                        max-width: 100%;
+                        max-width: 98%;
                         max-height: 100%;
                         margin-top: 5%;
                         column-gap: 10px;
@@ -820,6 +821,8 @@ section#projects {
                         align-self: center;
                         display: flex;
                         flex-direction: row;
+                        flex-wrap: wrap;
+                        row-gap: 1rem;
                         justify-content: space-around;
                         padding: 10px 0;
 
@@ -904,7 +907,7 @@ section#projects {
 
             .project-image {
                 display: flex;
-                max-width: 98%;
+                max-width: 90%;
                 height: 100px;
                 width: 100%;
             }
