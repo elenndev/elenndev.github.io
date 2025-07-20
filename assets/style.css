@@ -518,16 +518,19 @@ section#introduction {
     }
 }
 
+
 section#projects {
     display: flex;
+    height: auto;
     flex-direction: column;
-    height: fit-content;
+    min-height: max-content;
     align-items: center;
     justify-content: center;
     margin-top: 15px;
 
     .container {
         z-index: 1;
+        height: fit-content;
         background: var(--bodyColor);
         position: relative;
         display: flex;
@@ -539,7 +542,7 @@ section#projects {
         border: solid var(--bodyBorder) var(--bodyBorderColor);
 
         .container-header {
-            height: fit-content;
+            min-height: fit-content;
             padding: 10px 0;
             width: 100%;
             display: flex;
@@ -583,6 +586,7 @@ section#projects {
         .content {
             width: 100%;
             display: grid;
+            min-height: fit-content;
             grid-template-columns: repeat(2, 50%);
             grid-template-rows: min-content auto;
 
@@ -690,17 +694,18 @@ section#projects {
                     align-items: center;
                     justify-content: center;
                     row-gap:0;
-                    width: 90%;
-                    height: 500px;
-                    min-height: max-content;
+                    width: auto;
+                    height: 400px;
                     position: relative;
+                    padding: 2em 5em;
                     background: var(--secondaryColor);
                     box-shadow: 9px 8px 0 #1E1E1E;
                     border: solid var(--bodyBorder) var(--bodyBorderColor);
 
                     img.project-image{
                         margin-top: 40px;
-                        width: 90%;
+                        width: auto;
+                        height: 300px;
                     }
 
                     .window-header {
@@ -892,7 +897,7 @@ section#projects {
             align-self: flex-start;
             justify-content: center;
             width: 90%;
-            margin-top: 10%;
+            margin-top: 50px;
             position: relative;
             max-height: 100%;
             min-height: fit-content;
@@ -902,11 +907,14 @@ section#projects {
             .card-header {
                 margin-bottom: 10px;
                 text-align: center;
+                min-height: fit-content;
                 p{
-                    max-width: 90%;
+                    max-width: 70%;
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: center;
+                    white-space: normal;
+
                 }
             }
 
