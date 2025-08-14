@@ -7,7 +7,8 @@
     --secondaryColor: #E9E3DC;
     --shadowColor: #221D1A;
     --textColor: #1E1E1E; 
-    --bodyColor: #D5D5D6
+    --bodyColor: #D5D5D6;
+    --linkTextColor: rgb(111, 111, 247);
 }
 
 * {
@@ -1181,6 +1182,12 @@ a {
     font-size: inherit;
 }
 
+a.community-link {
+    color: var( --linkTextColor);
+}
+
+
+
 
 body.dark-theme{
     background: #2b2b2b;
@@ -1189,6 +1196,7 @@ body.dark-theme{
         --bodyColor: #2b2b2b;   
         --textColor: #E9E3DC; 
         --secondaryColor: #b7b1aa;
+        --linkTextColor: rgb(111, 111, 247);
     
     }
     section#introduction{
@@ -1279,6 +1287,8 @@ body.dark-theme{
 body.light-theme{
     *{
         --bodyColor: #D5D5D6;
+        --linkTextColor: rgb(61, 61, 175);
+
     }
     section#aboutMe> div > div.content > div > div{
         p, .whereToFindMe>p{
