@@ -1352,6 +1352,23 @@ body.light-theme{
     }
 }
 
+@media (max-width: 939px){
+    section#projects{
+        .container{
+            .content{
+                .card.project-bigWindow{
+                    .content{
+                        .project-view{
+                            padding: 2rem;
+                            width: 80%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 1203px) {
     section#projects>.container {
         .container-header {
@@ -1499,8 +1516,12 @@ body.light-theme{
                     }
                     .content{
                         .project-view{
+                            width: 75%;
+                            padding: 10px;
                             img,.galery>ul>li>img{
-                                height: 100px;
+                                /* height: 100px; */
+                                width: 70%;
+                                height: auto;
                             }
                             .links-area{
                                 a{
