@@ -37,11 +37,10 @@ html {
   color: #1E1E1E;
 }
 
-* {
+
+:root {
   margin: 0;
 }
-
-
 
 body,
 #root {
