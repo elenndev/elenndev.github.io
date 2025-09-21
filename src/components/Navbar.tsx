@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
 import { Link } from "./ui/Link";
+import { useGsap } from "../hooks/useGsap";
 
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 
 export default function Navbar() {
+  const gsap = useGsap();
   const [isOpen, setIsOpen] = useState(false);
   const menuLinks = [
     {
@@ -18,9 +18,8 @@ export default function Navbar() {
       text: 'Contato'
     }]
 
-  const toggleNavButtonBarsClasses = 'bg-body border-[3px] border-secondary shadow-[3px_4px_0_var(--shadowColor)] w-[50px] h-[10px] rounded-[25px] transition-all duration-300'
+  const toggleNavButtonBarsClasses = 'bg-body border-[3px] border-secondary shadow-[3px_4px_0_var(--shadowColor)] w-[40px] sm:w-[50px] h-[10px] rounded-[25px] transition-all duration-300'
 
-  gsap.registerPlugin(useGSAP);
   const navRef = useRef<HTMLUListElement>(null);
 
   const handleToggleMenu = () => {
@@ -54,7 +53,7 @@ export default function Navbar() {
     <div>
       <button
         onClick={handleToggleMenu}
-        className={`md:hidden right-4 ${isOpen && 'absolute top-10 w-[100px]'}  h-fit z-50 flex flex-col justify-center gap-[10px] `}
+        className={`md:hidden right-4 ${isOpen && 'absolute top-10 w-[100px]'}  h-fit z-80 flex flex-col justify-center gap-[10px] `}
       >
         <span
           className={`${toggleNavButtonBarsClasses} ${isOpen ? "absolute rotate-45" : ""
@@ -72,7 +71,7 @@ export default function Navbar() {
       <nav ref={navRef}
         className={`${isOpen ? "flex" : "hidden md:flex"
           } absolute flex-col h-screen w-full sm:w-1/2 right-0 top-0 shadow-[0_10px_30px_40px_rgba(0,0,0,0.377)] pt-[130px] pr-[5%]
-        md:flex md:flex-row md:w-fit gap-2 items-center md:relative md:shadow-none md:h-full z-40  md:pt-0 md:pr-0 bg-body`}
+        md:flex md:flex-row md:w-fit gap-2 items-center md:relative md:shadow-none md:h-full z-60 md:pt-0 md:pr-0 bg-body`}
       >
         {menuLinks.map(item => <Link
           variant="primary" size="custom"

@@ -4,12 +4,15 @@
   --color-body: #D5D5D6;
   --color-border: #221D1A;
   --color-secondary: #2b2b2b;
+  --color-text: #1E1E1E;
+
+  --color-red-theme: #eb4839;
 
   --color-link: white;
   --color-link-border: #221D1A;
   --color-link-hover: #e4c30a;
 
-  --border-default: black;
+  --color-border-default: black;
 
 
   --shadow-solid: 4px 3px 0 var(--shadowColor)
@@ -25,11 +28,13 @@ html.dark {
   --color-body: #2b2b2b;
   --color-border: white;
   --color-secondary: #D5D5D6;
+  --color-text: #D5D5D6;
+
 
   --color-link: #b7b1aa;
   --color-link-border: #57524c;
 
-  --border-default: white;
+  --color-border-default: white;
 
 }
 
@@ -40,6 +45,7 @@ html {
 
 :root {
   margin: 0;
+  overflow-x: hidden;
 }
 
 body,
@@ -47,4 +53,22 @@ body,
   font-family: "Roboto Condensed", sans-serif;
   min-width: 100vw;
   min-height: 100vh;
+}
+
+.typewriter {
+  position: relative;
+  display: inline-block;
+}
+
+.typewriter::after {
+  content: "|";
+  position: absolute;
+  right: -8px;
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
