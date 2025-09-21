@@ -28,8 +28,8 @@ html.dark {
   --color-body: #2b2b2b;
   --color-border: white;
   --color-secondary: #D5D5D6;
-  --color-text: #D5D5D6;
-
+  /* --color-text: #D5D5D6; */
+  --color-text: white;
 
   --color-link: #b7b1aa;
   --color-link-border: #57524c;
