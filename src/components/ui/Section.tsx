@@ -11,11 +11,11 @@ interface sectionProps {
 }
 
 
-export const Section = forwardRef<HTMLElement, sectionProps>(({ variant = 'welcome', children, id, title }, ref) => {
+export const Section = forwardRef<HTMLElement, sectionProps>(({ variant = 'default', children, id, title }, ref) => {
   const welcomeSectionHeaderClasses = 'bg-red-theme text-white'
 
   return (
-    <section ref={ref} id={id} className="min-h-fit w-[95%] bg-body">
+    <section ref={ref} id={id} className="min-h-[500px] h-fit w-[95%] bg-body text-text">
       <div className="bg-body relative z-[1] border-1 border-border-default">
         <div className='section-header py-2 border-b-1 border-b-border-default flex flex-row items-center justify-center relative'>
           <div className="flex flex-row gap-1 sm:gap-[10px] absolute w-fit top-1/2 left-3 -translate-y-1/2">

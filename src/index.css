@@ -5,6 +5,7 @@
   --color-border: #221D1A;
   --color-secondary: #2b2b2b;
   --color-text: #1E1E1E;
+  --color-text-link: : rgb(61, 61, 175);
 
   --color-red-theme: #eb4839;
 
@@ -30,6 +31,8 @@ html.dark {
   --color-secondary: #D5D5D6;
   /* --color-text: #D5D5D6; */
   --color-text: white;
+  --color-text-link: rgb(111, 111, 247);
+
 
   --color-link: #b7b1aa;
   --color-link-border: #57524c;
@@ -53,8 +56,12 @@ body,
   font-family: "Roboto Condensed", sans-serif;
   min-width: 100vw;
   min-height: 100vh;
+  height: fit-content;
+  overflow-y: scroll;
 }
 
+
+/* Text writting animation */
 .typewriter {
   position: relative;
   display: inline-block;

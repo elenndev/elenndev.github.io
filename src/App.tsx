@@ -1,71 +1,42 @@
-import { useEffect, useRef } from "react"
 import Header from "./components/Header"
 import { Section } from "./components/ui/Section"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGsap } from "./hooks/useGsap"
 import meIcon from "./assets/icon.webp"
+import { SiTailwindcss, SiJavascript, SiTypescript, SiNextdotjs, SiNestjs } from "react-icons/si";
+import { FaReact } from "react-icons/fa";
+import { IconContext } from "react-icons";
+import { Link } from "./components/ui/Link";
 
 
 function App() {
-  const gsap = useGsap();
-  gsap.registerPlugin(ScrollTrigger)
+  const { welcomeRef, h1Ref, profileRef } = useGsap();
 
-  const h1Ref = useRef<HTMLHeadingElement>(null)
-  const sectionRef = useRef<HTMLElement>(null)
+  const socialLinks = [
+    {
+      name: "Email",
+      to: "mailto:elenndev@gmail.com"
+    },
+    {
+      name: "GitHub",
+      to: "https://github.com/elenndev"
+    },
+    {
+      name: "Email",
+      to: "https://linkedin.com/in/elen-damares"
+    },
 
-  useEffect(() => {
-    if (!sectionRef.current || !h1Ref.current) return
 
-    // Animação de entrada/saída da section
-    gsap.fromTo(
-      sectionRef.current,
-      { autoAlpha: 0, y: 50 },
-      {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play reverse play reverse",
-          onEnter: () => typewriterEffect(),
-          onEnterBack: () => typewriterEffect(),
-        },
-      }
-    )
-    function typewriterEffect() {
-      const text = "Olá, eu sou a elen!"
-      const el = h1Ref.current
-      if (!el) return
-
-      el.textContent = "" // limpa
-      let i = 0
-
-      gsap.to({}, {
-        duration: text.length * 0.01,
-        repeat: text.length - 1,
-        onRepeat: () => {
-          if (el.textContent !== undefined) {
-            el.textContent = text.slice(0, ++i)
-          }
-        },
-      })
-    }
-
-    typewriterEffect()
-  }, [])
+  ]
 
   return (
     <>
-      <div className="flex items-center flex-col">
+      <div className="flex items-center flex-col pb-10">
         <Header />
-        <main className="min-w-screen flex flex-col items-center mt-2">
-          <Section ref={sectionRef} title="Portfólio" variant="welcome" id="welcome">
+        <main className="min-w-screen flex gap-15 flex-col items-center mt-4">
+          <Section ref={welcomeRef} title="Portfólio" variant="welcome" id="welcome">
             <div className="section-content flex flex-col items-center py-8 sm:px-0 px-3 gap-4">
               <span className="w-full flex justify-center">
-                <h1 ref={h1Ref} className="typewriter text-5xl text-center font-mono font-bold text-text">Olá, eu sou a elen!</h1>
+                <h1 ref={h1Ref} className="h-20 md:h-12 min-h-fit typewriter text-5xl font-mono font-bold text-text">Olá, eu sou a elen!</h1>
               </span>
 
               <h2 className="text-2xl text-center pt-1 font-mono font-bold flex flex-row px-2 w-fit h-fit bg-link text-black border-2 border-link-border shadow-solid rounded-sm">
@@ -79,7 +50,40 @@ function App() {
               </div>
             </div>
           </Section>
+          <Section ref={profileRef} title="Profile" id="profile">
+            <div className="section-content flex flex-col items-center py-8 px-4 gap-4">
+              <h2 className="text-3xl text-center font-extrabold uppercase">Sobre mim</h2>
+              <div>
+                <p className="text-2xl">Desenvolvedora FullStack Júnior com experiência em HTML, CSS, Javascript, TypeScript, Next.JS,React.js, Node.js,
+                  Responsividade, GSAP, Tailwind CSS, Styled Components, e consumo de
+                  APIs.<br /> Aplico minhas habilidades em projetos pessoais e também atuando em projetos voluntários na
+                  <a className="text-text-link" href="https://www.linkedin.com/company/comunidade-frontend-fusion/"
+                    target="_blank"> comunidade Frontend Fusion</a></p>
+              </div>
+              <div className='w-full flex flex-row gap-3 justify-center flex-wrap'>
+                <IconContext.Provider
+                  value={{ style: { color: 'var(--color-secondary)' }, size: '3rem' }}>
+                  <SiTypescript />
+                  <SiJavascript />
+                  <FaReact />
+                  <SiNextdotjs />
+                  <SiTailwindcss />
+                  <SiNestjs />
+                </IconContext.Provider>
+              </div>
+              <div className="w-full flex flex-col items-center gap-2">
+                <div className="w-full flex flex-row gap-3 justify-center flex-wrap">
+                  {socialLinks.map((link, i) =>
+                    <Link rel="noopener noreferrer" target="_blank" key={i} href={link.to}><>{link.name}</></Link>)}
+                </div>
+                <span className="w-full flex flex-row justify-center">
+                  <Link download="Elen Santos CV - Desenvolvedora FullStack" href="assets/Elen Santos CV - Desenvolvedora FullStack.pdf">Download CV</Link>
+                </span>
+              </div>
 
+            </div>
+
+          </Section>
         </main>
 
       </div>
