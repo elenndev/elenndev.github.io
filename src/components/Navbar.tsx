@@ -76,6 +76,7 @@ export default function Navbar() {
         {menuLinks.map((item, i) => <Link
           variant="primary" size="custom"
           key={i}
+          onClick={handleToggleMenu}
           className="w-4/5 sm:w-1/2 md:w-fit"
           href={item.href}
           children={item.text} />)}
