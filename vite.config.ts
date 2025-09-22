@@ -4,6 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/elenndev.github.io/",
+  base: "./elenndev.github.io/",
   plugins: [react(), tailwindcss()],
 })
