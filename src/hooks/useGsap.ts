@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 export const useGsap = () => {
   const welcomeRef = useRef(null)
   const profileRef = useRef(null)
+  const projectsRef = useRef(null)
   const h1Ref = useRef<HTMLHeadingElement>(null)
 
   gsap.registerPlugin(ScrollTrigger)
@@ -14,7 +15,7 @@ export const useGsap = () => {
 
   useEffect(() => {
     function typewriterEffect() {
-      const text = "Olá, eu sou a Elen!"
+      const text = "Olá, eu sou a Elen! "
       const el = h1Ref.current
       if (!el) return
 
@@ -63,15 +64,34 @@ export const useGsap = () => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: profileRef.current,
-          start: "top 90%", // ajusta quando começar
+          start: "top 90%",
           end: "bottom 20%",
           toggleActions: "play reverse play reverse",
         },
       }
     )
 
+    // Animação da seção "projects"
+    gsap.fromTo(
+      projectsRef.current,
+      { autoAlpha: 0, y: 50 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: projectsRef.current,
+          start: "top 90%",
+          end: "bottom 20%",
+          toggleActions: "play reverse play reverse",
+        },
+      }
+    )
+
+
   }, [])
 
   gsap.registerPlugin(useGSAP);
-  return { gsap, h1Ref, profileRef, welcomeRef };
+  return { gsap, h1Ref, profileRef, welcomeRef, projectsRef };
 }

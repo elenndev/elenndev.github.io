@@ -6,10 +6,11 @@ import { SiTailwindcss, SiJavascript, SiTypescript, SiNextdotjs, SiNestjs } from
 import { FaReact } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { Link } from "./components/ui/Link";
+import { Projects } from "./components/Projects/Projects";
 
 
 function App() {
-  const { welcomeRef, h1Ref, profileRef } = useGsap();
+  const { welcomeRef, h1Ref, profileRef, projectsRef } = useGsap();
 
   const socialLinks = [
     {
@@ -21,7 +22,7 @@ function App() {
       to: "https://github.com/elenndev"
     },
     {
-      name: "Email",
+      name: "Linkedin",
       to: "https://linkedin.com/in/elen-damares"
     },
 
@@ -30,13 +31,13 @@ function App() {
 
   return (
     <>
-      <div className="flex items-center flex-col pb-10">
+      <div className="flex items-center relative flex-col pb-10">
         <Header />
-        <main className="min-w-screen flex gap-15 flex-col items-center mt-4">
+        <main className="min-w-screen z-[1] relative flex gap-15 flex-col items-center mt-24">
           <Section ref={welcomeRef} title="Portfólio" variant="welcome" id="welcome">
             <div className="section-content flex flex-col items-center py-8 sm:px-0 px-3 gap-4">
               <span className="w-full flex justify-center">
-                <h1 ref={h1Ref} className="h-20 md:h-12 min-h-fit typewriter text-5xl font-mono font-bold text-text">Olá, eu sou a elen!</h1>
+                <h1 ref={h1Ref} className="h-[9rem] text-center md:h-12 min-h-fit typewriter text-5xl font-mono font-bold text-text">Olá, eu sou a elen! </h1>
               </span>
 
               <h2 className="text-2xl text-center pt-1 font-mono font-bold flex flex-row px-2 w-fit h-fit bg-link text-black border-2 border-link-border shadow-solid rounded-sm">
@@ -50,6 +51,7 @@ function App() {
               </div>
             </div>
           </Section>
+
           <Section ref={profileRef} title="Profile" id="profile">
             <div className="section-content flex flex-col items-center py-8 px-4 gap-4">
               <h2 className="text-3xl text-center font-extrabold uppercase">Sobre mim</h2>
@@ -80,11 +82,17 @@ function App() {
                   <Link download="Elen Santos CV - Desenvolvedora FullStack" href="assets/Elen Santos CV - Desenvolvedora FullStack.pdf">Download CV</Link>
                 </span>
               </div>
-
             </div>
-
           </Section>
+
+          <Projects ref={projectsRef} />
         </main>
+        <span className="w-screen overflow-hidden h-full flex flex-col absolute z-[0]">
+          <span className='fig1 w-screen h-screen'></span>
+          <span className='fig2 w-screen h-screen'></span>
+
+        </span>
+
 
       </div>
     </>
