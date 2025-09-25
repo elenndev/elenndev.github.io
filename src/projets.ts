@@ -23,14 +23,16 @@ export const projects: IProject[] = [
 
   {
     name: "2fa",
-    tags: ["Backend", "NestJs", "TypeORM",],
+    tags: ["Backend", "NestJs", "TypeORM", "Nodemailer"],
     links: [{ name: "GitHub", href: "https://github.com/elenndev/2fa-backend" }],
     shortDescription: "Uma aplicação backend que registra usuários e implementa um login 2FA usando o e-mail do usuário.",
-    description: "Uma API com dois endpoints para gerar e lidar com a verificação de códigos de acesso de usuários que serão enviados por e-mail e possuem um tempo de expiração, construída com Node.js, Express, MongoDB e Nodemailer.",
+    description: "Uma API NestJS com endpoints para registro de usuários e autenticação de dois fatores. O sistema gera códigos PIN enviados por e-mail usando o nodemailer, verifica a validade dos códigos e gerencia a autenticação de usuários com tempo de expiração.",
     featuresAndDetails: [
-      "Recebe username e email e gera um código de acesso",
-      "Login",
-      "Verifica se o código de acesso aidna é valido ou está expirado"
+      "Registro de usuários com nome de usuário, e-mail e senha",
+      "Sistema de login que gera e envia códigos PIN por e-mail",
+      "Validação de códigos PIN com verificação de tempo de expiração",
+      "Integração com serviço de e-mail usando Nodemailer",
+      "Confirmação de identidade do usuário através de autenticação de dois fatores"
     ]
   },
   {
