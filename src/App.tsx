@@ -34,7 +34,7 @@ function App() {
     <>
       <div className="flex items-center relative flex-col pb-10">
         <Header />
-        <main className="min-w-screen z-[1] relative flex gap-15 flex-col items-center mt-24">
+        <main className="min-w-screen z-[1] relative flex gap-12 flex-col items-center mt-24">
           <Section ref={welcomeRef} title="Portfólio" variant="welcome" id="welcome">
             <div className="section-content flex flex-col items-center py-8 sm:px-0 px-3 gap-4">
               <span className="w-full flex justify-center">
@@ -86,9 +86,10 @@ function App() {
             </div>
           </Section>
 
+          <Experiences ref={experiencesRef} />
+
           <Projects ref={projectsRef} />
 
-          <Experiences ref={experiencesRef} />
 
         </main>
         <span className="w-screen overflow-hidden h-full flex flex-col absolute z-[0]">
