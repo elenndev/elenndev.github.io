@@ -7,10 +7,11 @@ import { FaReact } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { Link } from "./components/ui/Link";
 import { Projects } from "./components/Projects/Projects";
+import { Experiences } from "./components/Experiences/Experiences";
 
 
 function App() {
-  const { welcomeRef, h1Ref, profileRef, projectsRef } = useGsap();
+  const { welcomeRef, h1Ref, profileRef, projectsRef, experiencesRef } = useGsap();
 
   const socialLinks = [
     {
@@ -86,6 +87,9 @@ function App() {
           </Section>
 
           <Projects ref={projectsRef} />
+
+          <Experiences ref={experiencesRef} />
+
         </main>
         <span className="w-screen overflow-hidden h-full flex flex-col absolute z-[0]">
           <span className='fig1 w-screen h-screen'></span>

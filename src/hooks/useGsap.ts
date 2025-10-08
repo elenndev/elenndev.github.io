@@ -8,6 +8,7 @@ export const useGsap = () => {
   const welcomeRef = useRef(null)
   const profileRef = useRef(null)
   const projectsRef = useRef(null)
+  const experiencesRef = useRef(null)
   const h1Ref = useRef<HTMLHeadingElement>(null)
 
   gsap.registerPlugin(ScrollTrigger)
@@ -89,9 +90,29 @@ export const useGsap = () => {
       }
     )
 
+    // Animação da seção "experiences"
+    gsap.fromTo(
+      experiencesRef.current,
+      { autoAlpha: 0, y: 50 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: experiencesRef.current,
+          start: "top 90%",
+          end: "bottom 20%",
+          toggleActions: "play reverse play reverse",
+        },
+      }
+    )
+
+
+
 
   }, [])
 
   gsap.registerPlugin(useGSAP);
-  return { gsap, h1Ref, profileRef, welcomeRef, projectsRef };
+  return { gsap, h1Ref, profileRef, welcomeRef, projectsRef, experiencesRef };
 }
