@@ -13,7 +13,7 @@ export const Projects = ({ ref }: projectsProps) => {
   return (<>
 
     <Section id="projects" title="Projects" ref={ref}>
-      <div className="section-content w-full px-3 py-4 flex flex-row flex-wrap justify-center gap-3">
+      <div className="section-content w-full px-3 py-4 flex flex-row flex-wrap justify-center gap-3 md:gap-4">
         {openProject && <Project project={openProject} close={() => setOpenProject(false)} />}
         {!openProject &&
           <>

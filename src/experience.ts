@@ -9,7 +9,7 @@ export const experiences: IExperience[] = [
   {
     organization: "Frontend Fusion",
     description: "Atuo como desenvolvedora fullstack e lider técnica em projetos voluntários para ONGs. Enquanto lider, oriento o planejamento, defino a direção técnica e reviso códigos. Como dev, atuo no desenvolvimento de interfaces modernas e responsivas.",
-    tags: ["React", "NextJs", "Typescript", "Tailwind", "Node", "NestJS", "Jest + React Testing Library", "Github flow", "Git semântico"],
+    tags: ["React", "NextJs", "Typescript", "Tailwind", "Node", "NestJS", "Jest + React Testing Library", "Github flow", "Git semântico", "SCRUM"],
     links: [{ name: "Github", href: "https://github.com/Projeto-FrontEnd-Fusion" }]
   },
   {
