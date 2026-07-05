@@ -22,7 +22,7 @@
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://github.com/elenndev/elenndev.github.io",
+  "homepage": "https://elenndev.github.io/elenndev.github.io",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
