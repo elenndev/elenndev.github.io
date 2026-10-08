@@ -1,4 +1,5 @@
 import chatNowNowImg from "../projectsMidia/chat-nownow.jpeg";
+import violetaElizImg from "../projectsMidia/violeta-eliz.png";
 import amevisImg from "../projectsMidia/amevis.png";
 
 export interface IExperience {
@@ -48,7 +49,7 @@ export const experiences: IExperience[] = [
     badge: "Trabalho Voluntário",
     role: "Desenvolvedora Full Stack",
     description:
-      "Atuação voluntária no desenvolvimento de sistemas web para ONGs, como a Associação Cultural e Educacional Violeta Eliz (ACEVE). Colaborei no planejamento técnico, revisão de código e formação de squads dentro da comunidade, focando em boas práticas, acessibilidade e interfaces responsivas.",
+      "Atuação voluntária no desenvolvimento de sistemas web para ONGs, como a Associação Cultural e Educacional Violeta Eliz. Colaborei no planejamento técnico, revisão de código e formação de squads dentro da comunidade, focando em boas práticas, acessibilidade e interfaces responsivas.",
     tags: [
       "React",
       'Next.js',
@@ -76,7 +77,39 @@ export interface IProject {
 
 export const projects: IProject[] = [
   {
-    name: "Amevis Perfumes — E-commerce B2C",
+    name: "Associação Violeta Eliz",
+    tags: [
+      "Fullstack",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "PostgreSQL",
+      "Docker",
+      "Bulletproof React",
+    ],
+    image: violetaElizImg,
+    links: [
+      {
+        name: "GitHub",
+        href: "https://github.com/Projeto-FrontEnd-Fusion/Aceve-website-development",
+      },
+      { name: "Deploy", href: "https://violetaeliz.org.br/" },
+    ],
+    shortDescription:
+      "Plataforma institucional para a ONG Violeta Eliz com gestão de doações via PayPal, Pix e transparência de projetos sociais.",
+    description:
+      "Website institucional desenvolvido para fortalecer a presença digital e a credibilidade da Associação Violeta Eliz. A solução simplifica o fluxo de doações via integração com a API do PayPal e geração automatizada de QR Code para Pix, além de oferecer um painel de prestação de contas com galeria das ações sociais viabilizadas por meio das doações. Construído seguindo a arquitetura Bulletproof React e containerizado com Docker.",
+    featuresAndDetails: [
+      "Integração com a API do PayPal e checkout facilitado com QR Code dinâmico para Pix",
+      "Galeria de prestação de contas e transparência das ações sociais",
+      "Arquitetura baseada no padrão Bulletproof React (módulos isolados por feature)",
+      "Gerenciamento de estado global reativo com Zustand e validação de formulários com Zod",
+      "Ambiente containerizado para desenvolvimento e deploy com Docker e PostgreSQL",
+    ],
+  },
+  {
+    name: "Amevis Perfumes — Catálogo digital",
     tags: [
       "Fullstack",
       "Next.js",
@@ -90,9 +123,9 @@ export const projects: IProject[] = [
       { name: "Deploy", href: "https://amevis.com.br/" },
     ],
     shortDescription:
-      "Catálogo digital e e-commerce para perfumaria importada com carrinho e checkout automatizado via WhatsApp.",
+      "Catálogo digital e para perfumaria importada com carrinho e checkout automatizado via WhatsApp.",
     description:
-      "E-commerce desenvolvido para a Amevis focado na otimização da jornada de compra e redução do tempo de atendimento. O sistema substitui o envio manual de catálogos e tabelas de preços por uma vitrine interativa com carrinho de compras integrado, gerando uma mensagem estruturada no WhatsApp com os itens selecionados para a finalização imediata do pedido.",
+      "Catálogo digital desenvolvido para a Amevis focado na otimização da jornada de compra e redução do tempo de atendimento. O sistema substitui o envio manual de catálogos e tabelas de preços por uma vitrine interativa com carrinho de compras integrado, gerando uma mensagem estruturada no WhatsApp com os itens selecionados para a finalização imediata do pedido.",
     featuresAndDetails: [
       "Catálogo interativo com detalhes do produto e preços visíveis",
       "Gestão de carrinho de compras reativo no frontend",
